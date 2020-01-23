@@ -42,32 +42,31 @@ def encode(number, base):
     assert number >= 0, 'number is negative: {}'.format(number)
 
     # Encode number in binary (base 2)
-    # if base == 2:
-    #     if number > 1:
-    #         return str(encode(number // 2, base)) + str(number % 2)
-    #     else:
-    #         return 1
+    '''
+    if base == 2:
+        if number > 1:
+            return encode(number // 2, base) + str(number % 2)
+        else:
+            return '1'
+    '''
 
     # Encode number in hexadecimal (base 16)
-    # elif base == 16:
-    #     hex_char = dict(enumerate('ABCDEF', 10))
-    #     if number < 10:
-    #         return number
-    #     elif number <= 15 and number >= 10:
-    #         return hex_char[number]
-    #     else:
-    #         return str(encode(number // 16, base)) + hex_char[number % 16]
+    '''
+    elif base == 16:
+        hex_digits = string.hexdigits[:16]
+        if number <= 16:
+            return hex_digits[number]
+        else:
+            return encode(number // 16, base) + hex_digits[number % 16]
+    '''
 
-    # TODO: Encode number in any base (2 up to 36)
-    # else:
-    char = dict(enumerate(string.ascii_uppercase[0:(base-10)], 10))
-    if number < 10:
-        return str(number)
-    # elif number <= base-1 and number >= 10:
-    #     return char[number]
+    # Encode number in any base (2 up to 36)
+    base_digits = (string.digits + string.ascii_lowercase)[:base]
+    if number < base:
+        print(number)
+        return base_digits[number]
     else:
-        # return str(encode(number // base, base)) + (char[number % base] if number < base else str(number % base))
-        return str(encode(number // base, base)) + (char[number % base] if number < base else str(number % base))
+        return encode(number // base, base) + base_digits[number % base]
 
 
 def convert(digits, base1, base2):
