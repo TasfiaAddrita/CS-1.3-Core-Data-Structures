@@ -95,7 +95,6 @@ def convert(digits, base1, base2):
     # Handle up to base 36 [0-9a-z]
     assert 2 <= base1 <= 36, 'base1 is out of range: {}'.format(base1)
     assert 2 <= base2 <= 36, 'base2 is out of range: {}'.format(base2)
-    conversion = None
     # Convert digits from base 2 to base 16 (and vice versa)
     # Convert digits from base 2 to base 10 (and vice versa)
     # Convert digits from base 10 to base 16 (and vice versa)
