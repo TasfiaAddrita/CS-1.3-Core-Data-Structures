@@ -4,83 +4,83 @@ from bases import decode, encode, convert
 import unittest
 
 
-# class BasesDecodeTest(unittest.TestCase):
+class BasesDecodeTest(unittest.TestCase):
 
-#     def test_decode_binary(self):
-#         assert decode('0', 2) == 0
-#         assert decode('1', 2) == 1
-#         assert decode('10', 2) == 2
-#         assert decode('11', 2) == 3
-#         assert decode('100', 2) == 4
-#         assert decode('101', 2) == 5
-#         assert decode('110', 2) == 6
-#         assert decode('111', 2) == 7
-#         assert decode('1000', 2) == 8
-#         assert decode('1001', 2) == 9
-#         assert decode('1010', 2) == 10
-#         assert decode('1011', 2) == 11
-#         assert decode('1100', 2) == 12
-#         assert decode('1101', 2) == 13
-#         assert decode('1110', 2) == 14
-#         assert decode('1111', 2) == 15
+    def test_decode_binary(self):
+        assert decode('0', 2) == 0
+        assert decode('1', 2) == 1
+        assert decode('10', 2) == 2
+        assert decode('11', 2) == 3
+        assert decode('100', 2) == 4
+        assert decode('101', 2) == 5
+        assert decode('110', 2) == 6
+        assert decode('111', 2) == 7
+        assert decode('1000', 2) == 8
+        assert decode('1001', 2) == 9
+        assert decode('1010', 2) == 10
+        assert decode('1011', 2) == 11
+        assert decode('1100', 2) == 12
+        assert decode('1101', 2) == 13
+        assert decode('1110', 2) == 14
+        assert decode('1111', 2) == 15
 
-#     def test_decode_decimal(self):
-#         assert decode('5', 10) == 5
-#         assert decode('9', 10) == 9
-#         assert decode('10', 10) == 10
-#         assert decode('25', 10) == 25
-#         assert decode('64', 10) == 64
-#         assert decode('99', 10) == 99
-#         assert decode('123', 10) == 123
-#         assert decode('789', 10) == 789
-#         assert decode('2345', 10) == 2345
-#         assert decode('6789', 10) == 6789
-#         assert decode('13579', 10) == 13579
-#         assert decode('24680', 10) == 24680
+    def test_decode_decimal(self):
+        assert decode('5', 10) == 5
+        assert decode('9', 10) == 9
+        assert decode('10', 10) == 10
+        assert decode('25', 10) == 25
+        assert decode('64', 10) == 64
+        assert decode('99', 10) == 99
+        assert decode('123', 10) == 123
+        assert decode('789', 10) == 789
+        assert decode('2345', 10) == 2345
+        assert decode('6789', 10) == 6789
+        assert decode('13579', 10) == 13579
+        assert decode('24680', 10) == 24680
 
-#     def test_decode_hexadecimal(self):
-#         assert decode('a', 16) == 10
-#         assert decode('f', 16) == 15
-#         assert decode('99', 16) == 153
-#         assert decode('ff', 16) == 255
-#         assert decode('ace', 16) == 2766
-#         assert decode('cab', 16) == 3243
-#         assert decode('bead', 16) == 48813
-#         assert decode('face', 16) == 64206
-#         assert decode('c0ffee', 16) == 12648430
-#         assert decode('facade', 16) == 16435934
-#         assert decode('deadbeef', 16) == 3735928559
-#         assert decode('f007ba11', 16) == 4027038225
+    def test_decode_hexadecimal(self):
+        assert decode('a', 16) == 10
+        assert decode('f', 16) == 15
+        assert decode('99', 16) == 153
+        assert decode('ff', 16) == 255
+        assert decode('ace', 16) == 2766
+        assert decode('cab', 16) == 3243
+        assert decode('bead', 16) == 48813
+        assert decode('face', 16) == 64206
+        assert decode('c0ffee', 16) == 12648430
+        assert decode('facade', 16) == 16435934
+        assert decode('deadbeef', 16) == 3735928559
+        assert decode('f007ba11', 16) == 4027038225
 
-#     def test_decode_10(self):
-#         assert decode('10', 2) == 2
-#         assert decode('10', 4) == 4
-#         assert decode('10', 8) == 8
-#         assert decode('10', 10) == 10
-#         assert decode('10', 16) == 16
-#         assert decode('10', 25) == 25
-#         assert decode('10', 32) == 32
-#         assert decode('10', 36) == 36
+    def test_decode_10(self):
+        assert decode('10', 2) == 2
+        assert decode('10', 4) == 4
+        assert decode('10', 8) == 8
+        assert decode('10', 10) == 10
+        assert decode('10', 16) == 16
+        assert decode('10', 25) == 25
+        assert decode('10', 32) == 32
+        assert decode('10', 36) == 36
 
-#     def test_decode_1010(self):
-#         assert decode('1010', 2) == 10
-#         assert decode('1010', 4) == 68
-#         assert decode('1010', 8) == 520
-#         assert decode('1010', 10) == 1010
-#         assert decode('1010', 16) == 4112
-#         assert decode('1010', 25) == 15650
-#         assert decode('1010', 32) == 32800
-#         assert decode('1010', 36) == 46692
+    def test_decode_1010(self):
+        assert decode('1010', 2) == 10
+        assert decode('1010', 4) == 68
+        assert decode('1010', 8) == 520
+        assert decode('1010', 10) == 1010
+        assert decode('1010', 16) == 4112
+        assert decode('1010', 25) == 15650
+        assert decode('1010', 32) == 32800
+        assert decode('1010', 36) == 46692
 
-#     def test_decode_101101(self):
-#         assert decode('101101', 2) == 45
-#         assert decode('101101', 4) == 1105
-#         assert decode('101101', 8) == 33345
-#         assert decode('101101', 10) == 101101
-#         assert decode('101101', 16) == 1052929
-#         assert decode('101101', 25) == 9781876
-#         assert decode('101101', 32) == 33588225
-#         assert decode('101101', 36) == 60514129
+    def test_decode_101101(self):
+        assert decode('101101', 2) == 45
+        assert decode('101101', 4) == 1105
+        assert decode('101101', 8) == 33345
+        assert decode('101101', 10) == 101101
+        assert decode('101101', 16) == 1052929
+        assert decode('101101', 25) == 9781876
+        assert decode('101101', 32) == 33588225
+        assert decode('101101', 36) == 60514129
 
 
 class BasesEncodeTest(unittest.TestCase):
