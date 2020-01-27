@@ -57,7 +57,7 @@ def encode(number, base):
     # Handle up to base 36 [0-9a-z]
     assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
     # Handle unsigned numbers only for now
-    assert number >= 0, 'number is negative: {}'.format(number)
+    # assert number >= 0, 'number is negative: {}'.format(number)
 
     # Encode number in binary (base 2)
     '''
@@ -78,13 +78,46 @@ def encode(number, base):
             return encode(number // 16, base) + hex_digits[number % 16]
     '''
 
-    # Encode number in any base (2 up to 36)
-    base_digits = (string.digits + string.ascii_lowercase)[:base]
-    if number < base:
-        return base_digits[number]
+    if number < 0 and base == 2:
+        return negative_binary(encode, (0 - number)) # callback function
     else:
-        return encode(number // base, base) + base_digits[number % base]
+        # recursive -- Encode number in any base (2 up to 36)
+        base_digits = (string.digits + string.ascii_lowercase)[:base]
+        if number < base:
+            return base_digits[number]
+        else:
+            return encode(number // base, base) + base_digits[number % base]
 
+    # try iterative 
+
+def negative_binary(encode, number):
+    def invert(binary):
+        return ''.join(['1' if bit == '0' else '0' for bit in binary])
+
+    num_encode = encode(number, 2)[::-1]
+    if len(num_encode) > 3:
+        num_encode += (8 - len(num_encode)) * '0'
+    else:
+        num_encode += (4 - len(num_encode)) * '0'
+    num_encode = invert(num_encode)
+    neg_bin = ''
+    carry = True
+    for bit in num_encode:
+        if carry:
+            bit_sum = int(bit) + 1
+            if bit_sum > 1:
+                if bit_sum == 2:
+                    neg_bin += '0'
+                if bit_sum == 3:
+                    neg_bin += '1'
+                carry = True
+            else:
+                carry = False
+                neg_bin += str(bit_sum)
+        else:
+            neg_bin += bit
+    
+    return neg_bin[::-1]
 
 def convert(digits, base1, base2):
     """Convert given digits in base1 to digits in base2.
@@ -119,4 +152,7 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    # main()
+    # print(negative_binary(encode(60, 2)))
+    # print(negative_binary(60))
+    print(encode(-72, 2))
