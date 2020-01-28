@@ -40,13 +40,24 @@ def decode(digits, base):
         return decimal
     '''
 
-    # Decode digits from any base (2 up to 36)
+    digits_str = digits.lower().split('.')
     exp = 0
-    decimal = 0
-    for digit in digits[::-1]:
-        decimal += (string.digits + string.ascii_lowercase).index(digit) * base**exp
-        exp += 1
-    return decimal
+
+    try:
+        exp = 0 - len(digits_str[1])
+    except:
+        'No radix point'
+    
+    decode = 0
+
+    for part in digits_str[::-1]:
+        decimal = 0
+        for digit in part[::-1]:
+            decimal += (string.digits + string.ascii_lowercase).index(digit) * base**exp
+            exp += 1
+        decode += decimal
+
+    return decode
 
 
 def encode(number, base):
@@ -78,7 +89,8 @@ def encode(number, base):
             return encode(number // 16, base) + hex_digits[number % 16]
     '''
 
-    if number < 0 and base == 2:
+    if number < 0:
+        assert base == 2, 'Can only encode negative numbers in binary'
         return negative_binary(encode, (0 - number)) # callback function
     else:
         # recursive -- Encode number in any base (2 up to 36)
@@ -155,4 +167,5 @@ if __name__ == '__main__':
     # main()
     # print(negative_binary(encode(60, 2)))
     # print(negative_binary(60))
-    print(encode(-72, 2))
+    # print(encode(-72, 2))
+    print(decode('AB', 16))

@@ -14,7 +14,11 @@ def factorial(n):
 
 def factorial_iterative(n):
     # TODO: implement the factorial function iteratively here
-    pass
+    factorial = 1
+    while n > 0:
+        factorial *= n
+        n -= 1
+    return factorial
     # once implemented, change factorial (above) to call factorial_iterative
     # to verify that your iterative implementation passes all tests
 
@@ -34,7 +38,7 @@ def main():
     args = sys.argv[1:]  # Ignore script file name
     if len(args) == 1:
         num = int(args[0])
-        result = factorial(num)
+        result = factorial_iterative(num)
         print('factorial({}) => {}'.format(num, result))
     else:
         print('Usage: {} number'.format(sys.argv[0]))
