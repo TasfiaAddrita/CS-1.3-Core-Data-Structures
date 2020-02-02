@@ -18,8 +18,26 @@ def is_palindrome(text):
 
 
 def is_palindrome_iterative(text):
-    # TODO: implement the is_palindrome function iteratively here
-    pass
+    # implement the is_palindrome function iteratively here
+    if len(text) in [0, 1]:
+        return True
+    text_lowercase = text.lower()
+    left_index = 0
+    right_index = len(text) - 1
+    while left_index < right_index:
+        if not text_lowercase[left_index].isalpha():
+            left_index += 1
+            continue
+        if not text_lowercase[right_index].isalpha():
+            right_index -= 1
+            continue
+        if text_lowercase[left_index] == text_lowercase[right_index]:
+            left_index += 1
+            right_index -= 1
+        else:
+            return False
+    return True
+
     # once implemented, change is_palindrome to call is_palindrome_iterative
     # to verify that your iterative implementation passes all tests
 
@@ -28,7 +46,7 @@ def is_palindrome_recursive(text, left=None, right=None):
     # TODO: implement the is_palindrome function recursively here
     pass
     # once implemented, change is_palindrome to call is_palindrome_recursive
-    # to verify that your iterative implementation passes all tests
+    # to verify that your recursive implementation passes all tests
 
 
 def main():
@@ -46,4 +64,5 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    # main()
+    print(is_palindrome_iterative('BB'))
