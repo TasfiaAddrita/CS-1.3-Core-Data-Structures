@@ -31,21 +31,29 @@ def find_all_indexes(string, target):
         return list(range(0, len(string)))
 
     index = 0
-    t_index = 0  # first letter
+    t_index = 0  # first letter of target word
     start_index = None
-    matching_index = []
+    matching_indexes_list = []
+    # xyz = [index for index, value in enumerate(string) if string[index] == target[0] and index <= len(string) - len(target) and index != 0]
+    # print(xyz)
+    # xyz_index = 0
+    # went_back = False
 
     while index < len(string):
         if string[index].isalpha():
+            # if string[index] == target[0] and index <= len(string) - len(target) and not went_back:
+            #     xyz.append(index)
+            #     went_back = False
             if string[index] == target[t_index]:
                 if t_index == 0:
                     start_index = index
                 if t_index == len(target) - 1:
-                    matching_index.append(start_index)
+                    matching_indexes_list.append(start_index)
                     t_index = 0
-                    # if string[index] == target[t_index]:
-                    #     start_index = index
-                    #     t_index += 1
+                    if string[index] == target[t_index]:
+                        if len(target) == 1:
+                            index += 1
+                        continue
                 else:
                     t_index += 1  # go to next letter of target word
             else:
@@ -55,8 +63,22 @@ def find_all_indexes(string, target):
                     t_index += 1
                 else:
                     start_index = None
+
+                # if xyz_index == 0:
+                #     xyz_index += 1
+                # print(xyz, xyz_index)
+                # if len(xyz) != 0 and xyz_index < len(xyz):
+                #     index = xyz[xyz_index]
+                #     xyz_index += 1
+                #     # t_index += 1
+                #     # went_back = True
+                #     start_index = None
+                #     continue
+
         index += 1
-    return matching_index
+    # assert matching_indexes_list == [1]
+    # return list(set(matching_indexes_list))
+    return matching_indexes_list
 
 
 def test_string_algorithms(text, pattern):
@@ -87,29 +109,9 @@ def main():
         print("find_index('abra cadabra', 'abra') => 0")
         print("find_all_indexes('abra cadabra', 'abra') => [0, 8]")
 
-
-def word_match(string, target):
-    index = 0
-    t_index = 0  # first letter
-    start_index = None
-
-    while index < len(string):
-        if string[index] == target[t_index]:
-            if t_index == 0:
-                start_index = index
-            if t_index == len(target) - 1:
-                return start_index
-            t_index += 1  # go to next letter of target word
-        else:
-            t_index = 0  # reset
-            if string[index] == target[t_index]:
-                start_index = index
-                t_index += 1
-            else:
-                start_index = None
-        index += 1
-    return start_index
-
 if __name__ == '__main__':
     # main()
-    print(find_all_indexes('aaa', 'aa'))
+    # print(find_all_indexes('ababc', 'abc'))
+    # print(find_all_indexes('aaaaab', 'aaab')) # fails
+    # print(find_all_indexes('abc', 'a'))
+    # print(find_all_indexes('aaa', 'aa'))
