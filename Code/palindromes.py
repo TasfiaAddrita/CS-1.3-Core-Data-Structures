@@ -13,14 +13,12 @@ def is_palindrome(text):
     # implement is_palindrome_iterative and is_palindrome_recursive below, then
     # change this to call your implementation to verify it passes all tests
     assert isinstance(text, str), 'input is not a string: {}'.format(text)
-    return is_palindrome_iterative(text)
-    # return is_palindrome_recursive(text)
+    # return is_palindrome_iterative(text)
+    return is_palindrome_recursive(text)
 
 
 def is_palindrome_iterative(text):
     # implement the is_palindrome function iteratively here
-    if len(text) in [0, 1]:
-        return True
     text_lowercase = text.lower()
     left_index = 0
     right_index = len(text) - 1
@@ -43,8 +41,22 @@ def is_palindrome_iterative(text):
 
 
 def is_palindrome_recursive(text, left=None, right=None):
-    # TODO: implement the is_palindrome function recursively here
-    pass
+    # implement the is_palindrome function recursively here
+    if left is None or right is None:
+        left = 0
+        right = len(text) - 1
+    text_lowercase = text.lower()
+    if left > right:
+        return True
+    if not text_lowercase[left].isalpha():
+        return is_palindrome_recursive(text, left + 1, right)
+    if not text_lowercase[right].isalpha():
+        return is_palindrome_recursive(text, left, right - 1)
+    if text_lowercase[left] == text_lowercase[right]:
+        return is_palindrome_recursive(text, left + 1, right - 1)
+    else:
+        return False
+
     # once implemented, change is_palindrome to call is_palindrome_recursive
     # to verify that your recursive implementation passes all tests
 
@@ -64,5 +76,4 @@ def main():
 
 
 if __name__ == '__main__':
-    # main()
-    print(is_palindrome_iterative('BB'))
+    main()
