@@ -39,6 +39,8 @@ class StringsTest(unittest.TestCase):
         # TODO: Write more test cases that check complex patterns or edge cases
         # You'll need a lot more than this to test your algorithm's robustness
         # ...
+    
+    '''
 
     def test_find_index_with_matching_patterns(self):
         # Positive test cases (examples) with matching patterns
@@ -78,7 +80,7 @@ class StringsTest(unittest.TestCase):
         # TODO: Write more test cases that check complex patterns or edge cases
         # You'll need a lot more than this to test your algorithm's robustness
         # ...
-    '''
+
     def test_find_all_indexes_with_matching_patterns(self):
         # Positive test cases (examples) with matching patterns
         assert find_all_indexes('abc', '') == [0, 1, 2]  # all strings contain empty string
@@ -90,8 +92,12 @@ class StringsTest(unittest.TestCase):
         assert find_all_indexes('abc', 'abc') == [0]  # all strings contain themselves
         assert find_all_indexes('aaa', 'a') == [0, 1, 2]  # multiple occurrences
         assert find_all_indexes('aaa', 'aa') == [0, 1]  # overlapping pattern
+
         # TODO: Write more positive test cases with assert equal list statements
-        # ...
+        assert find_all_indexes('aaaaab', 'aaab') == [2]
+
+        # edge test cases
+        # escape characters, overlapping characters
 
     def test_find_all_indexes_with_non_matching_patterns(self):
         # Negative test cases (counterexamples) with non-matching patterns
@@ -114,9 +120,12 @@ class StringsTest(unittest.TestCase):
         assert find_all_indexes('abcabcdabcde', 'abcd') == [3, 7]  # multiple occurrences, overlapping prefix
         assert find_all_indexes('abra cadabra', 'abra') == [0, 8]  # multiple occurrences
         assert find_all_indexes('abra cadabra', 'adab') == [6]  # overlapping prefix
+        
         # TODO: Write more test cases that check complex patterns or edge cases
         # You'll need a lot more than this to test your algorithm's robustness
-        # ...
+        assert find_all_indexes('abra cadabra', 'abra ') == [0]
+        assert find_all_indexes('abcab r a cdef', 'ab r a ') == [3]
+        assert find_all_indexes('bana\'nas', 'na\'n') == [2]
 
 
 if __name__ == '__main__':

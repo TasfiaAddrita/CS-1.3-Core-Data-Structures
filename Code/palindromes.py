@@ -19,6 +19,10 @@ def is_palindrome(text):
 
 def is_palindrome_iterative(text):
     # implement the is_palindrome function iteratively here
+    '''
+    Best time complexity -- O(1), text is either empty or contains one character
+    Average time complexity -- O(n/2), text is palindrome
+    '''
     text_lowercase = text.lower()
     left_index = 0
     right_index = len(text) - 1

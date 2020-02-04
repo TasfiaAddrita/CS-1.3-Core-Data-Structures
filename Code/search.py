@@ -47,6 +47,10 @@ def binary_search(array, item):
 
 def binary_search_iterative(array, item):
     # implement binary search iteratively here
+    '''
+    Best time complexity -- O(1), target item is in the middle index
+    Average time complexity -- O(log n), target item is in the last index
+    '''
     left = 0
     right = len(array) - 1
     while left <= right:
@@ -66,6 +70,10 @@ def binary_search_iterative(array, item):
 
 def binary_search_recursive(array, item, left=None, right=None): # don't pass in list for left and right
     # implement binary search recursively here
+    '''
+    Best time complexity -- O(1), target item is in the middle index
+    Average time complexity -- O(log n), target item is in the last index
+    '''
     if left is None and right is None:
         left = 0
         right = len(array) - 1
