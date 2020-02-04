@@ -46,6 +46,10 @@ def is_palindrome_iterative(text):
 
 def is_palindrome_recursive(text, left=None, right=None):
     # implement the is_palindrome function recursively here
+    '''
+    Best time complexity -- O(1), text is either empty or contains one character
+    Average time complexity -- O(n/2), text is palindrome
+    '''
     if left is None or right is None:
         left = 0
         right = len(text) - 1
