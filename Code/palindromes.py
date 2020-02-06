@@ -6,6 +6,7 @@ import string
 # string.ascii_uppercase is 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 # string.ascii_letters is ascii_lowercase + ascii_uppercase
 
+# extreme palindrome test http://norvig.com/pal21txt.html
 
 def is_palindrome(text):
     """A string of characters is a palindrome if it reads the same forwards and
