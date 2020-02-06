@@ -245,6 +245,7 @@ class LinkedList(object):
                 # Update tail to the previous node regardless
                 self.tail = previous
             self.size -= 1
+            return item
         else:
             # Otherwise raise an error to tell the user that delete has failed
             raise ValueError('Item not found: {}'.format(item))
