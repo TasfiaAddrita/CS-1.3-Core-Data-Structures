@@ -69,7 +69,7 @@ class ArrayStack(object):
     def is_empty(self):
         """Return True if this stack is empty, or False otherwise."""
         # Check if empty
-        return True if len(self.list) == 0 else False
+        return len(self.list) == 0
 
     def length(self):
         """Return the number of items in this stack."""
@@ -78,7 +78,7 @@ class ArrayStack(object):
 
     def push(self, item):
         """Insert the given item on the top of this stack.
-        Running time: O(1) – list.append() method is O(1), adding an element to the end of the list"""
+        Running time: O(1) – list.append() method is O(1), only directly accessing the last element of the list to add an element, thus overall complexity is constant"""
         # Insert given item
         self.list.append(item)
 
@@ -91,7 +91,7 @@ class ArrayStack(object):
     def pop(self):
         """Remove and return the item on the top of this stack,
         or raise ValueError if this stack is empty.
-        Running time: O(1) – list.pop() method if O(1), removing the last element of the list"""
+        Running time: O(1) – list.pop() method if O(1), only directly accessing the last element of the list, thus overall complexity is constant"""
         # Remove and return top item, if any
         if self.is_empty():
             raise ValueError()
