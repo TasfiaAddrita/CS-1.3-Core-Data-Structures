@@ -40,6 +40,7 @@ class LinkedStack(object):
         or None if this stack is empty."""
         # Return top item, if any
         return None if self.is_empty() else self.list.get_at_index(0)
+        # return None if self.is_empty() else self.list.head
 
     def pop(self):
         """Remove and return the item on the top of this stack,

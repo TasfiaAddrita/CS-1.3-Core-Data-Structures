@@ -40,6 +40,7 @@ class LinkedQueue(object):
         or None if this queue is empty."""
         # Return front item, if any
         return None if self.is_empty() else self.list.get_at_index(0)
+        # return None if self.is_empty() else self.list.head
 
     def dequeue(self):
         """Remove and return the item at the front of this queue,
