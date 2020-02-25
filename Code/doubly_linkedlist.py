@@ -7,7 +7,7 @@ class BinaryNode(Node):
 
 class DoublyLinkedList(LinkedList):
     def __init__(self, iterable=None):
-        super().__init__(iterable) # uses append method from DoublyLinkedList, not LinkedList
+        super().__init__(iterable) # uses append method from DoublyLinkedList, not LinkedList, Polymorphism
 
     def __str__(self):
         """Return a formatted string representation of this doubly linked list."""
@@ -24,6 +24,8 @@ class DoublyLinkedList(LinkedList):
         self.tail = new_node
         self.size += 1
 
+        # if not empty, call ...
+
     def prepend(self, item):
         new_node = BinaryNode(item)
         if self.is_empty():
@@ -39,3 +41,6 @@ class DoublyLinkedList(LinkedList):
 
     def delete(self, index):
         pass
+    def get_at_index(self, index);
+        if index < self.length() // 2:
+            super().get_at_index(index)
