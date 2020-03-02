@@ -114,6 +114,9 @@ class HashTable(object):
             bucket.delete(entry)
             self.size -= 1
         # Insert the new key-value entry into the bucket in either case
+        # if value is None:
+        #     bucket.append((key))
+        # else:
         bucket.append((key, value))
         self.size += 1
         # Check if the load factor exceeds a threshold such as 0.75
