@@ -9,7 +9,9 @@ class Set():
                 self.add(element)
 
     def items(self):
-        """Return a list of all entries (key-value pairs) in this hash table."""
+        """
+        Return a list of all entries (key-value pairs) in this hash table.
+        """
         all_items = []
         for bucket in self.ht.buckets:
             for item in bucket.items():
@@ -17,23 +19,31 @@ class Set():
         return all_items
 
     def size(self):
-        "Property that tracks the number of elements in constant time"
+        """
+        Property that tracks the number of elements in constant time
+        """
         return self.ht.size
 
     def contains(self, element):
-        "Return a boolean indicating whether element is in this set"
+        """
+        Return a boolean indicating whether element is in this set
+        """
         return self.ht.contains(element)
 
     def add(self, element):
-        "Add element to this set, if not present already"
+        """Add element to this set, if not present already"""
         return self.ht.set(element, None)
 
     def remove(self, element):
-        "Remove element from this set, if present, or else raise KeyError"
+        """
+        Remove element from this set, if present, or else raise KeyError
+        """
         return self.ht.delete(element)
 
     def union(self, other_set):
-        "Return a new set that is the union of this set and other_set"
+        """
+        Return a new set that is the union of this set and other_set
+        """
         union = Set(self.items())
         for o_item in other_set.items():
             if self.contains(o_item) == False:
@@ -41,7 +51,7 @@ class Set():
         return union
 
     def intersection(self, other_set):
-        "Return a new set that is the intersection of this set and other_set"
+        """Return a new set that is the intersection of this set and other_set"""
         intersect = Set()
         for o_item in other_set.items():
             if self.contains(o_item):
@@ -49,7 +59,7 @@ class Set():
         return intersect
 
     def difference(self, other_set):
-        "Return a new set that is the difference of this set and other_set"
+        """Return a new set that is the difference of this set and other_set"""
         diff = Set(self.items())
         for o_item in other_set.items():
             if self.contains(o_item) == False:
@@ -59,7 +69,7 @@ class Set():
         return diff
 
     def is_subset(self, other_set):
-        "Return a boolean indicating whether other_set is a subset of this set"
+        """Return a boolean indicating whether other_set is a subset of this set"""
         for o_item in other_set.items():
             if not self.contains(o_item):
                 return False

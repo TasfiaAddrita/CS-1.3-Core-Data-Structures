@@ -24,6 +24,29 @@ class SetTest(unittest.TestCase):
         s.add('C')
         assert s.size() == 3
 
+    def test_add(self):
+        s = Set()
+        assert s.items() == []
+        s.add('A')
+        assert s.items() == ['A']
+        s.add('B')
+        assert sorted(s.items()) == ['A', 'B']
+        s.add('C')
+        assert sorted(s.items()) == ['A', 'B', 'C']
+        s.add('A')
+        assert sorted(s.items()) == ['A', 'B', 'C']
+
+    def test_remove(self):
+        s = Set([1, 2, 3, 4, 5])
+        s.remove(4)
+        assert s.items() == [1, 2, 3, 5]
+        s.remove(2)
+        assert s.items() == [1, 3, 5]
+        with self.assertRaises(KeyError):
+            s.remove(2)  # Key no longer exists
+        with self.assertRaises(KeyError):
+            s.remove(6)  # Key does not exist
+
     def test_union(self):
         set_A = Set([1, 2, 3])
         set_B = Set([3, 4, 5])
@@ -69,6 +92,16 @@ class SetTest(unittest.TestCase):
         set_A = Set([1, 2, 3])
         set_B = Set([2, 3, 5])
         assert set_A.is_subset(set_B) == False
+    
+    def test_is_subset_of_setA(self):
+        set_A = Set(['A'])
+        set_B = Set(['A', 'B'])
+        assert set_A.is_subset(set_B) == False # is set_B a subset of set_A
+    
+    def test_is_subset_empty_true(self):
+        set_A = Set([1, 2, 3])
+        set_B = Set([])
+        assert set_A.is_subset(set_B) == True
 
 
 if __name__ == '__main__':
