@@ -1,3 +1,15 @@
+"""
+Techniques to solve this
+1) Sorted array + binary search
+2) Binary Search Tree
+3) (Recursive) Permutations
+4) Dictionary Lookups
+5) Sets
+6) Anagram Trie
+7) Combinations
+8) ASCII (?)
+"""
+
 import time
 from set import Set, HashTable
 

@@ -61,17 +61,17 @@ class Set():
     def difference(self, other_set):
         """Return a new set that is the difference of this set and other_set"""
         diff = Set(self.items())
-        for o_item in other_set.items():
-            if self.contains(o_item) == False:
-                diff.add(o_item)
+        for s_item in self.items():
+            if other_set.contains(s_item) == False:
+                diff.add(s_item)
             else:
-                diff.remove(o_item)
+                diff.remove(s_item)
         return diff
 
     def is_subset(self, other_set):
         """Return a boolean indicating whether other_set is a subset of this set"""
-        for o_item in other_set.items():
-            if not self.contains(o_item):
+        for s_item in self.items():
+            if not other_set.contains(s_item):
                 return False
         return True
 

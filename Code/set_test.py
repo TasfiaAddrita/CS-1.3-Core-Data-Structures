@@ -75,7 +75,8 @@ class SetTest(unittest.TestCase):
         set_A = Set([1, 2, 3])
         set_B = Set([3, 4, 5])
         set_C = set_A.difference(set_B)
-        assert set_C.items() == [1, 2, 4, 5]
+        # assert set_C.items() == [1, 2, 4, 5]
+        assert set_C.items() == [1, 2]
     
     def test_difference_empty(self):
         set_A = Set([1, 2, 3])
@@ -84,9 +85,14 @@ class SetTest(unittest.TestCase):
         assert set_C.items() == []
     
     def test_is_subset(self):
+        set_A = Set([1, 2])
+        set_B = Set([1, 2, 3])
+        assert set_A.is_subset(set_B) == True
+
+    def test_is_subset_false_1(self):
         set_A = Set([1, 2, 3])
         set_B = Set([2, 3])
-        assert set_A.is_subset(set_B) == True
+        assert set_A.is_subset(set_B) == False
     
     def test_is_subset_false(self):
         set_A = Set([1, 2, 3])
@@ -96,12 +102,12 @@ class SetTest(unittest.TestCase):
     def test_is_subset_of_setA(self):
         set_A = Set(['A'])
         set_B = Set(['A', 'B'])
-        assert set_A.is_subset(set_B) == False # is set_B a subset of set_A
+        assert set_A.is_subset(set_B) == True # is set_A a subset of set_B
     
     def test_is_subset_empty_true(self):
         set_A = Set([1, 2, 3])
-        set_B = Set([])
-        assert set_A.is_subset(set_B) == True
+        set_B = Set()
+        assert set_A.is_subset(set_B) == False
 
 
 if __name__ == '__main__':
